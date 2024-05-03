@@ -1,0 +1,28 @@
+{
+  "name": "cybe-socket",
+  "version": "0.0.1",
+  "description": "socket-manager to send and get messages",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ridheshcybe/cybe-socket.git"
+  },
+  "keywords": [
+    "socket",
+    "manager",
+    "socket-manager",
+    "ws",
+    "websocket",
+    "express-ws",
+    "express"
+  ],
+  "author": "ridhesh w <https://ridheshw.netlify.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ridheshcybe/cybe-socket/issues"
+  },
+  "homepage": "https://github.com/ridheshcybe/cybe-socket#readme"
+}
