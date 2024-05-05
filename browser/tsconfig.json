@@ -1,0 +1,10 @@
+{
+  "include": ["./*.ts"],
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "umd",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": true
+  }
+}

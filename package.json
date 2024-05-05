@@ -1,8 +1,9 @@
 {
   "name": "cybe-socket",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "socket-manager to send and get messages",
-  "main": "index.js",
+  "main": "./server/index.js",
+  "browser": "./browser/index.js",
   "scripts": {
     "test": "npx jest"
   },
@@ -24,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/ridheshcybe/cybe-socket/issues"
   },
-  "homepage": "https://github.com/ridheshcybe/cybe-socket#readme"
+  "homepage": "https://github.com/ridheshcybe/cybe-socket#readme",
+  "devDependencies": {
+    "@types/node": "^20.12.8",
+    "jest-websocket-mock": "^2.5.0"
+  }
 }

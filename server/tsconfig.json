@@ -1,0 +1,10 @@
+{
+  "include": ["./index.ts"],
+  "compilerOptions": {
+    "target": "ES5",
+    "sourceMap": true,
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "declaration": true
+  }
+}
