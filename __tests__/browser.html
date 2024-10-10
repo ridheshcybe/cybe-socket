@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../browser/index.js"></script>
+    <script>
+        clientinit = new SocketManager(new WebSocket("http://localhost:8080"));
+        clientinit.on("ready", (name2) => {
+            clientinit.send("hello");
+            console.log(name, name2);
+        })
+    </script>
+</body>
+
+</html>

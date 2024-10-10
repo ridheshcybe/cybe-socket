@@ -35,9 +35,10 @@ var SocketManager = /** @class */ (function (_super) {
         }, options);
         _this.name = opt.nameFunc() || crypto.randomUUID();
         _this.socket = socket;
-        socket.addEventListener("error", opt.onerror);
-        socket.addEventListener("close", opt.onerror);
-        socket.addEventListener("message", function wrap(Wrapper) {
+        console.log(socket.addEventListener);
+        socket.onerror = function () { return opt.onerror; };
+        socket.onclose = function () { return opt.onerror; };
+        socket.onmessage = function () { return function wrap(Wrapper) {
             if (Wrapper.data !== 'ready') {
                 console.warn("ready not fired");
                 return socket.close(3000, "use protocol");
@@ -65,11 +66,14 @@ var SocketManager = /** @class */ (function (_super) {
                     socket.close(3000, 'use protocol ERROR: ' + error.message);
                 }
             });
-        });
+        }; };
+        _this.send = function (method, data) {
+            _this.socket.send("".concat(method, "(SocketSplit)").concat((data)));
+        };
         return _this;
     }
-    SocketManager.prototype.send = function (method, data) {
-        this.socket.send("".concat(method, "(SocketSplit)").concat((data)));
+    SocketManager.prototype.send = function (arg0, name) {
+        throw new Error('Method not implemented.');
     };
     return SocketManager;
 }(node_events_1.EventEmitter));

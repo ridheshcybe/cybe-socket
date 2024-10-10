@@ -15,6 +15,7 @@ interface Options {
 export class SocketManager extends EventEmitter {
     name: string;
     socket: WebSocket;
+    close: () => void;
     constructor(socket: WebSocket, options: Partial<Options>) {
         super();
         const self = this;
@@ -27,10 +28,11 @@ export class SocketManager extends EventEmitter {
 
         this.name = opt.nameFunc() || crypto.randomUUID();
         this.socket = socket;
-
-        socket.addEventListener("error", opt.onerror);
-        socket.addEventListener("close", opt.onerror);
-        socket.addEventListener("message", function wrap(Wrapper) {
+        console.log(socket.addEventListener
+        )
+        socket.onerror = () => opt.onerror;
+        socket.onclose = () => opt.onerror;
+        socket.onmessage = () => function wrap(Wrapper) {
             if (Wrapper.data !== 'ready') {
                 console.warn("ready not fired");
                 return socket.close(3000, "use protocol");
@@ -58,10 +60,13 @@ export class SocketManager extends EventEmitter {
                     socket.close(3000, 'use protocol ERROR: ' + error.message);
                 }
             })
-        })
+        };
+        this.send = (method: string, data: any) => {
+            this.socket.send(`${method}(SocketSplit)${(data)}`);
+        }
     }
-    send(method: string, data: any) {
-        this.socket.send(`${method}(SocketSplit)${(data)}`);
+    send(arg0: string, name: string) {
+        throw new Error('Method not implemented.');
     }
 }
 
