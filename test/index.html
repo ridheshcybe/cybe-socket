@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="/browser.js"></script>
+    <script>
+        // Create a new secure client
+        const client = new SecureClient('ws://localhost:1000');
+
+        // Set up event handlers
+        client.on('connected', () => {
+            console.log('Connected to secure server!');
+            client.sendSecureMessage({ type: 'greeting', text: 'Hello, server!' });
+        });
+
+        client.on('message', (data) => {
+            console.log('Received message:', data);
+        });
+
+        client.on('error', (error) => {
+            console.error('Error occurred:', error);
+        });
+
+        // Connect to the server
+        client.connect().catch(error => {
+            console.error('Failed to connect:', error);
+        });
+
+    </script>
+</body>
+
+</html>
